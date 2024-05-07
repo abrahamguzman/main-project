@@ -9,13 +9,14 @@ Proyecto de integración a Api de OpenAi
 - [Autores](#autores)
 
 ## Configuración
-Antes de iniciar este proyecto, es necesario tener instalados los siguientes paquetes que se encuentran en el archivo:
-- requirements.txt
 
 > [!NOTE]
 > Antes de todo, debemos activar nuestro entorno virtual.
-> Se recomienda crear uno nuevo
+> Se recomienda crear uno nuevo.
 > Además se debe ejecutar los archivos desde la carpeta test-1
+
+Antes de iniciar este proyecto, es necesario tener instalados los siguientes paquetes que se encuentran en el archivo:
+- requirements.txt
 
 Para instalarlos debemos correr el siguiente comando en nuestra terminal:
 
