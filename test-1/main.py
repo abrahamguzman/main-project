@@ -1,37 +1,38 @@
-# importing required modules 
-from docx import Document 
-import pprint
-from helpers.token import numero_tokens_por_string
+from openai import OpenAI
+import json
 from helpers.file import lee_archivo_docx
+from helpers.text import dividir_texto_por_tokens
   
-text = lee_archivo_docx(ruta_archivo='docs/res-5.docx')
+client = OpenAI()  # Instancia de la clase OpenAI, para usar los métodos de la API.
+texto = lee_archivo_docx(ruta_archivo='docs/res-5.docx') # Lee el archivo .docx y devuelve una lista con los párrafos del archivo.
+texto_dividido = dividir_texto_por_tokens(texto=texto, max_tokens=3000) # Divide el texto en subtextos de máximo 3000 tokens.
 
-lista = []
-sublista = []
-tokens = 0
-max_tokens = 300
+# Leer el archivo messages.json
+with open("messages.json", "r", encoding='utf-8') as f:
+    messages = json.load(f)
 
-for i in text:
-    tokens += numero_tokens_por_string(i)
-    if tokens >= max_tokens:
-        if sublista[-1][-1] == ':':
-            y = sublista.pop()
-            lista.append(sublista)
-            sublista = [y]
-        else:
-            lista.append(sublista)
-            sublista = [i]
-        tokens = numero_tokens_por_string(sublista[0])
-    else:
-        sublista.append(i)
-if lista == [] and sublista != []:
-    lista.append(sublista)
+list_of_dicts = [] # Lista de diccionarios con el texto y la respuesta de cada subtexto.
+
+for i in texto_dividido:
+    texto_para_content = ' '.join(i)
+    print(texto)
     
-pprint.pp(lista)
-
-print("*"*50)
-
-for i in text:
-    print((numero_tokens_por_string(i), i))
+    response = response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        temperature=0,
+        messages=messages.append({
+                "role": "user", 
+                "content": texto_para_content
+                }),
+        )
     
+    # Crear un diccionario con el texto y la respuesta de cada subtexto.
+    dict_de_texto_y_respuesta = {
+        "texto": texto_para_content, 
+        "respuesta": response.choices[0].message.content
+        }
+    # Agregar el diccionario a la lista.
+    list_of_dicts.append(dict_de_texto_y_respuesta)
+
+print(list_of_dicts)
     
