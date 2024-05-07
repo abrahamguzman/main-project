@@ -12,8 +12,10 @@ Proyecto de integración a Api de OpenAi
 
 > [!NOTE]
 > Antes de todo, debemos activar nuestro entorno virtual.
-> Se recomienda crear uno nuevo.
 > Además se debe ejecutar los archivos desde la carpeta test-1
+
+> [!TIP]
+> Se recomienda crear un entorno virtual nuevo para evitar posibles errores.
 
 Antes de iniciar este proyecto, es necesario tener instalados los siguientes paquetes que se encuentran en el archivo:
 - requirements.txt
