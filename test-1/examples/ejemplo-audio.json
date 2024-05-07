@@ -1,0 +1,51 @@
+[
+  {
+    "parrafo": 1,
+    "locutor": "Roderick",
+    "oraciones": [
+      {
+        "tiempo": "00:00:11",
+        "texto": " Jessica, felicitaciones por lo emprendedora que eres, no te dejes amilanar por nada",
+        "idea": "Se felicita a Jessica por su emprendimiento y se le anima a seguir adelante",
+        "etiqueta": "felicitaciones"
+      },
+      {
+        "tiempo": "00:00:15",
+        "texto": "Porque acá, como les decía",
+        "etiqueta": "inicio"
+      },
+      {
+        "tiempo": "00:00:30",
+        "texto": "Pero vamos a comenzar la grabación acá, como les explicaba",
+        "etiqueta": "inicio"
+      },
+      {
+        "tiempo": "00:00:50",
+        "texto": "¿No has cometido ningún delito?",
+        "etiqueta": ["pregunta"]
+      }
+    ]
+  },
+  {
+    "parrafo": 2,
+    "locutor": "Jessica",
+    "oraciones": [
+      {
+        "tiempo": "00:00:11",
+        "texto": "Gracias Roderick, por tus palabras de aliento"
+      },
+      {
+        "tiempo": "00:00:15",
+        "texto": "No, no he cometido ningún delito"
+      },
+      {
+        "tiempo": "00:00:30",
+        "texto": "Pero vamos a comenzar la grabación acá, como les explicaba"
+      },
+      {
+        "tiempo": "00:00:50",
+        "texto": "¿No has cometido ningún delito?"
+      }
+    ]
+  }
+]
