@@ -2,17 +2,20 @@ from openai import OpenAI
 import json
 from helpers.file import lee_archivo_docx
 from helpers.text import dividir_texto_por_tokens
+from helpers.array import format_list_of_dicts
+from helpers.json import crear_json, leer_json
 
 # Instancia de la clase OpenAI, para usar los métodos de la API.
 client = OpenAI()
+
 # Lee el archivo .docx y devuelve una lista con los párrafos del archivo.
 texto = lee_archivo_docx(ruta_archivo='docs/res-5.docx')
-# Divide el texto en subtextos de máximo 3000 tokens.
-texto_dividido = dividir_texto_por_tokens(texto=texto, max_tokens=3000)
 
-# Leer el archivo messages.json (contiene mensajes base)
-with open("messages.json", "r", encoding='utf-8') as f:
-    messages = json.load(f)
+# Divide el texto en subtextos de máximo 3000 tokens.
+texto_dividido = dividir_texto_por_tokens(texto=texto, max_tokens=250) # Cambiar a 3500 tokens
+
+# Lee archivo que contiene mensajes base
+messages = leer_json(nombre_archivo="entrenamiento_base/01.json")
 
 # Lista de diccionarios con el texto y la respuesta de cada subtexto
 list_of_dicts = []
@@ -27,7 +30,7 @@ for i in texto_dividido:
 		})
     
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-3.5-turbo", # Cambiar a gpt-4o para pruebas -> $5 prompt - $15 completion (1M tokens)
         temperature=0,
         messages=messages
         )
@@ -46,7 +49,9 @@ for i in texto_dividido:
 	se procede con lo siguente
 """
 
+# Formatear la lista de diccionarios (Ver helpers/array.py)
+format_list_of_dicts(list_of_dicts)
+ 
 # Guardar la lista de diccionarios en un archivo .json
-with open("respuestas.json", "w", encoding='utf-8') as f:
-	json.dump(list_of_dicts, f, ensure_ascii=False, indent=4)
+crear_json(data=list_of_dicts, nombre_archivo="respuestas/01.json")
     

@@ -5,7 +5,7 @@
     },
     {
         "role": "user",
-        "content": "1. Transcribe literalmente los textos que te proporcionaré, segmentándolos en frases lo más cortas posibles. Cada frase debe incluir,  sujeto, verbo y predicado, ya sea que se encuentren de forma expresa o tácita (según el contexto). Asegúrate que cada una exprese exclusivamente una idea y no confíes en la puntuación original, pues podría no ser correcta. Los dos siguientes mensajes contienen: A. El ejemplo del texto que te entregaré; y B. El ejemplo del texto que deseo que devuelvas. 2. A cada frase le asignarás una de las siguientes etiquetas: Cronología / Cronología - Lectura De Fallo / Cronología - Sentencia - Lectura Integral / Cronología - Sentencia - Subida Al Sistema / Cronología - Sentencia - Notificada / Tipificación /  Legislación /  Conducta Imputada /  Ninguna /"
+        "content": "1. Transcribe literalmente los textos que te proporcionaré, segmentándolos en frases lo más cortas posibles, sin afectar la coherencio o idea que se quiere presentar. Cada frase debe incluir,  sujeto, verbo y predicado, ya sea que se encuentren de forma expresa o tácita (según el contexto). Asegúrate que cada una exprese exclusivamente una idea y no confíes en la puntuación original, pues podría no ser correcta. Los dos siguientes mensajes contienen: A. El ejemplo del texto que te entregaré; y B. El ejemplo del texto que deseo que devuelvas. 2. A cada frase le asignarás una de las siguientes etiquetas: Cronología / Cronología - Lectura De Fallo / Cronología - Sentencia - Lectura Integral / Cronología - Sentencia - Subida Al Sistema / Cronología - Sentencia - Notificada / Tipificación /  Legislación /  Conducta Imputada /  Ninguna /"
     },
     {
         "role": "system",
