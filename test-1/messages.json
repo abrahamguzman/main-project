@@ -8,7 +8,7 @@
         "content": "1. Transcribe literalmente los textos que te proporcionaré, segmentándolos en frases lo más cortas posibles. Cada frase debe incluir,  sujeto, verbo y predicado, ya sea que se encuentren de forma expresa o tácita (según el contexto). Asegúrate que cada una exprese exclusivamente una idea y no confíes en la puntuación original, pues podría no ser correcta. Los dos siguientes mensajes contienen: A. El ejemplo del texto que te entregaré; y B. El ejemplo del texto que deseo que devuelvas. 2. A cada frase le asignarás una de las siguientes etiquetas: Cronología / Cronología - Lectura De Fallo / Cronología - Sentencia - Lectura Integral / Cronología - Sentencia - Subida Al Sistema / Cronología - Sentencia - Notificada / Tipificación /  Legislación /  Conducta Imputada /  Ninguna /"
     },
     {
-        "role": "user",
+        "role": "system",
         "content": "El día 11 de noviembre de 2002, fecha señalada para lectura íntegra de la Sentencia, conforme al artículo 396 inciso 2) del Código Procesal Penal; el Juez Quejado, no leyó íntegramente la Sentencia, pese a existir en el acto oral, solicitud expresa del imputado en ese sentido; limitándose a leer la parte dispositiva, lo que ya se había efectuado con fecha 28 de octubre de 2022, que fue la fecha señalada para el adelanto de fallo."
     },
     {
