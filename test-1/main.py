@@ -3,56 +3,80 @@ from helpers.file import lee_archivo_docx
 from helpers.text import dividir_texto_por_tokens
 from helpers.array import format_list_of_dicts
 from helpers.json import crear_json, leer_json
+from helpers.consola import seleccionar_archivo
 
 # Instancia de la clase OpenAI, para usar los métodos de la API.
 client = OpenAI()
 
 # Lee el archivo .docx y devuelve una lista con los párrafos del archivo.
-texto = lee_archivo_docx(ruta_archivo='docs/Propuesta de Sanción 1 3.docx')
+ruta_archivo = seleccionar_archivo(directorio="docs/")
+print("Archivo seleccionado: ", ruta_archivo)
+print("Procesando...")
+
+texto = lee_archivo_docx(ruta_archivo="docs/" + ruta_archivo)
 
 # Divide el texto en subtextos de máximo 3000 tokens.
-texto_dividido = dividir_texto_por_tokens(texto=texto, max_tokens=250) # Cambiar a 3500 tokens
-#print(texto_dividido)
+texto_dividido = dividir_texto_por_tokens(texto=texto, max_tokens=2500) # Cambiar a 3500 tokens
 
 # Lee archivo que contiene mensajes base
-messages = leer_json(nombre_archivo="entrenamiento_base/Ronald_Manchego_Queja.json")
-# print(messages)
+historial_mensajes = leer_json(nombre_archivo="entrenamiento_base/Ronald_Manchego_Queja.json")
 
 # Lista de diccionarios con el texto y la respuesta de cada subtexto
 list_of_dicts = []
 
-# Crea un bucle para iterar con cada subtexto y mandarlo como prompt
+""" 
+    PASO PRINCIPAL:
+    Se envía cada subtexto a OpenAI para obtener una respuesta.
+"""
+
 for i in texto_dividido:
-    texto_para_content = ' '.join(i)
+    prompt_para_openai = ' '.join(i)
     
-    messages.append({
+    # Agregar el prompt al historial de mensajes
+    historial_mensajes.append({
 		"role": "user", 
-		"content": texto_para_content
+		"content": prompt_para_openai
 		})
     
     response = client.chat.completions.create(
         model="gpt-4o", # Cambiar a gpt-4o para pruebas -> $5 prompt - $15 completion (1M tokens)
         temperature=0,
-        messages=messages
+        messages=historial_mensajes
         )
+    
+    # Accede a la respuesta generada por OpenAI
+    respuesta_de_openai = response.choices[0].message.content
+    
+    # Guarda la respuesta en historial de mensajes
+    historial_mensajes.append({
+        "role": "assistant",
+        "content": respuesta_de_openai
+        })
+    
+    """ 
+        FUNCION SECUNDARIA
+        Guarda el texto y la respuesta en un diccionario para generar json
+    """
     
     # Crear un diccionario con el texto y la respuesta de cada subtexto.
     dict_de_texto_y_respuesta = {
-        "texto": texto_para_content, 
-        "respuesta": response.choices[0].message.content
+        "texto": prompt_para_openai, 
+        "respuesta": respuesta_de_openai
         }
-    # Agregar el diccionario a la lista.
+    
+    # Agregar el diccionario a la lista -> Para generar json
     list_of_dicts.append(dict_de_texto_y_respuesta)
 
 
 """ 
-	Una vez recibidas y guardadas las respuestas,
-	se procede con lo siguente
+	FINALMENTE:
 """
 
 # Formatear la lista de diccionarios (Ver helpers/array.py)
 format_list_of_dicts(list_of_dicts)
  
 # Guardar la lista de diccionarios en un archivo .json
-crear_json(data=list_of_dicts, nombre_archivo="respuestas/Segm_Etiq_Propuesta de Sanción 1 3_gpt-4ooo.json")
+crear_json(data=list_of_dicts, nombre_archivo="respuestas/"+ruta_archivo.split(".")[0]+"-4o.json")
+
+print("Archivo procesado con éxito.")
     
