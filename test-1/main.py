@@ -1,5 +1,4 @@
 from openai import OpenAI
-import json
 from helpers.file import lee_archivo_docx
 from helpers.text import dividir_texto_por_tokens
 from helpers.array import format_list_of_dicts
