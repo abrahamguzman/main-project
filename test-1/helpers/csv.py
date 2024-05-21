@@ -12,7 +12,7 @@ def generar_csv(data, nombre_archivo):
 
 
 def list_dict_to_list(data, key="respuestas_etiquetas"):
-    resultado = [d[key] for d in data]
+    resultado = [item for d in data for item in d[key]]
     return resultado
 
 # Privado

@@ -1,7 +1,7 @@
 from openai import OpenAI
 from helpers.file import lee_archivo_docx
 from helpers.text import dividir_texto_por_tokens
-from helpers.array import format_list_of_dicts
+from helpers.array import formatear_archivo
 from helpers.json import generar_json, leer_json
 from helpers.consola import seleccionar_archivo
 from helpers.csv import generar_csv
@@ -27,14 +27,14 @@ historial_mensajes = leer_json(
 )
 
 # Lista de diccionarios con el texto y la respuesta de cada subtexto
-list_of_dicts = []
+archivo_final = []
 
 """ 
     PASO PRINCIPAL:
     Se envía cada subtexto a OpenAI para obtener una respuesta.
 """
 
-for i in texto_dividido:
+for index, i in enumerate(texto_dividido):
     prompt_para_openai = " ".join(i)
 
     # Agregar el prompt al historial de mensajes
@@ -64,25 +64,25 @@ for i in texto_dividido:
     }
 
     # Agregar el diccionario a la lista -> Para generar json
-    list_of_dicts.append(dict_de_texto_y_respuesta)
+    archivo_final.append(dict_de_texto_y_respuesta)
 
-
+    print(f"Texto {index + 1} de {len(texto_dividido)} procesado.")
 """ 
 	FINALMENTE:
 """
 
-# Formatear la lista de diccionarios (Ver helpers/array.py)
-format_list_of_dicts(
-    list_of_dicts, incluir_respuesta=False, incluir_respuestas_etiquetas=True
+formatear_archivo(
+    archivo=archivo_final, 
+    incluir_respuesta=False, 
+    incluir_respuestas_etiquetas=True
 )
 
-# Guardar la lista de diccionarios en un archivo .json
 generar_json(
-    data=list_of_dicts,
+    data=archivo_final,
     nombre_archivo=nombre_archivo_original,
 )
 generar_csv(
-    data=list_of_dicts,
+    data=archivo_final,
     nombre_archivo=nombre_archivo_original,
 )
 

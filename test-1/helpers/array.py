@@ -1,10 +1,10 @@
-def format_list_of_dicts(
-    list_of_dicts,
+def formatear_archivo(
+    archivo,
     incluir_respuesta = True,
     incluir_respuestas = False, 
     incluir_respuestas_etiquetas = False,
     incluir_texto = False):
-    for i in list_of_dicts:
+    for i in archivo:
         lines = i["respuesta"].split("\n\n")
         
         if incluir_respuestas:
