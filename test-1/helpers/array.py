@@ -1,5 +1,6 @@
 def format_list_of_dicts(
-    list_of_dicts, 
+    list_of_dicts,
+    incluir_respuesta = True,
     incluir_respuestas = False, 
     incluir_respuestas_etiquetas = False,
     incluir_texto = False):
@@ -19,5 +20,7 @@ def format_list_of_dicts(
                 })
             i["respuestas_etiquetas"] = lines_etiquetas
         
-        if incluir_texto == False:
-            del i["texto"]   
+        if incluir_texto is False:
+            del i["texto"]
+        if incluir_respuesta is False:
+            del i["respuesta"]       

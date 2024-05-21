@@ -13,4 +13,4 @@ def seleccionar_archivo(directorio):
 
     answers = inquirer.prompt(questions)
 
-    return answers['archivo']
+    return answers["archivo"]
