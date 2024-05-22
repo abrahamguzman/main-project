@@ -12,19 +12,20 @@ client = OpenAI()
 # Lee el archivo .docx y devuelve una lista con los párrafos del archivo.
 nombre_archivo_original = seleccionar_archivo(directorio="docs/")
 print("Archivo seleccionado: ", nombre_archivo_original)
-print("Procesando...")
 
 texto = lee_archivo_docx(ruta_archivo="docs/" + nombre_archivo_original)
 
 # Divide el texto en subtextos de máximo 3000 tokens.
-texto_dividido = dividir_texto_por_tokens(
-    texto=texto, max_tokens=1000
-)  # Cambiar a 3500 tokens
+texto_dividido = dividir_texto_por_tokens(texto=texto, max_tokens=1000)
 
 # Lee archivo que contiene mensajes base
-historial_mensajes = leer_json(
-    nombre_archivo="entrenamiento_base/Ronald_Manchego_Queja.json"
+nombre_archivo_entrenamiento_base = seleccionar_archivo(
+    directorio="entrenamiento_base/"
 )
+historial_mensajes = leer_json(
+    nombre_archivo="entrenamiento_base/" + nombre_archivo_entrenamiento_base
+)
+print("Archivo seleccionado: ", nombre_archivo_entrenamiento_base)
 
 # Lista de diccionarios con el texto y la respuesta de cada subtexto
 archivo_final = []
@@ -72,9 +73,7 @@ for index, i in enumerate(texto_dividido):
 """
 
 formatear_archivo(
-    archivo=archivo_final, 
-    incluir_respuesta=False, 
-    incluir_respuestas_etiquetas=True
+    archivo=archivo_final, incluir_respuesta=False, incluir_respuestas_etiquetas=True
 )
 
 generar_json(
