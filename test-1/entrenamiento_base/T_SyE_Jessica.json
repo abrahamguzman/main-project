@@ -1,0 +1,14 @@
+[
+    {
+        "role": "system",
+        "content": "Eres lingüista especialista en idioma español y abogado."
+    },
+    {
+        "role": "user",
+        "content": "A. Segmento: Unidad de lenguaje que:\nA.1 Transmite una sola idea específica;\nA.2 Puede ser etiquetada con una sola de las etiquetas del sistema de etiquetas;\nA.3 Que no tenga más de 25 palabras.\nA.4 La “,” en el texto, indica que obligatoriamente debes generar un segmento nuevo.\nB. Segmentar: Hacer segmentos, sin añadir ni quitar ni una sola palabra, símbolo, o carácter.\nC. Resaltar: En cada uno de los segmentos generados, selecciona y resalta dos palabras relevantes poniéndolas entre asteriscos (*). Asegúrate de hacerlo para cada segmento de forma individual y que en cada segmento sean dos palabras resaltadas  Ejemplo: *palabra1* *palabra2*\nE. Sistema De Etiquetas:\n1 Defensa Ineficaz\n2 Cronología\n3 Fines\n3.1 Explotación\n3.1.1 Pagaban Su Comida\n3.1.2 Video Pub\n3.1.2.1 Administrador\n3.1.2.2 Dueño\n3.1.2.3 Licencia\n3.1.3 Dama de Compañía\n3.1.3.1 Comisión\n3.1.3.1.1 Porcentaje\n3.1.3.3 Horario\n3.1.3.4 Edad\n3.1.3.5 Ropa\n3.1.3.6 N° de Chicas\n3.1.4 Bailes Eróticos\n3.1.5 Sexo\n3.1.5.1 Pago\n3.1.5.2 Video Pub\n3.1.5.2.1 Privados\n3.1.5.2.1.1 Lucro\n3.1.5.2.1.2 Habitaciones\n3.1.5.2.1.3 Profiláctico\n3.1.5.3 Hotel\n3.1.5.3.1 Lucro\n3.1.5.3.2 Administrador\n3.1.5.3.3 Dueño\n3.1.5.3.4 Licencia\n3.1.6 Trabajos o Servicios forzados\n3.1.7 Esclavitud\n3.1.7.1 Prácticas Análogas\n3.1.8 Servidumbre\n3.1.9 Extracción O Tráfico de Órganos\n3.1.10 Formas Análogas\n3.1.11 Otros Que Dañen Derechos Fundamentales\n3.1.12 Lucro\n4 Imputados\n4.1 Aporte\n4.1.1 Cambió Celular\n4.1.2 Configuró Borrado MMS\n4.2 Peligro\n4.2.1 Fuga\n4.2.2 Obstaculización\n4.3 Detención\n5 Lavado De Activos\n5 Lealtad Procesal\n6.1 MP\n6.2 Judicatura\n7 Medio Comisivo\n7.1 Consentimiento\n7.1.1 Menor De Edad\n7.1.2 Mayor De Edad\n7.2 Abuso\n7.2.1 Multas\n7.2.2 De Poder\n7.2.3 De Vulnerabilidad\n7.3 Amenaza\n7.4 Coacción\n7.5 Engaño\n7.6 Fraude\n7.7 Privación De Libertad\n7.8 Violencia\n7.9 Pagos\n7.9.1 Concesión\n7.9.2 Recepción\n8 Modus Operandi\n8.1 Diferentes Identidades\n8.2 Tácticas\n9 Normatividad\n10 Organización Criminal\n10.1 Estructura\n10.1.1 Cabecillas\n10.1.2 Mandos Medios\n10.1.3 Colaboradores\n11 Tipificación\n12 Tratante\n13 Verbos\n13.1 Captar\n13.1.1 Oferta Engañosa\n13.2 Cosificar\n13.3 Transportar\n13.4 Trasladar\n13.5 Acoger\n13.5.1 Vivienda\n13.5.1.1 Externa\n13.5.1.2 Hotel\n13.5.1.3 Pagaban\n13.5.2 Procedencia\n13.6 Recibir\n13.7 Retener\n13.7.1 Celular\n13.7.1.1 Tenían 2\n13.7.2 Seguridad\n13.7.2.1 Chicas\n13.7.2.2 Puerta\n13.7.2.3 Arma\n13.7.2.4 Cámara\n14 Víctimas\n15 Ninguna\n\nRespuesta: Exceptuando los “*” de resaltar, contendrá única y exclusivamente el texto de cada segmento y en la siguiente fila la etiqueta, sin aumentar ni un solo carácter mas."
+    },
+    {
+        "role": "assistant",
+        "content": "Entendido"
+    }
+]
