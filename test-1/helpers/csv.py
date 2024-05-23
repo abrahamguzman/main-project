@@ -1,8 +1,9 @@
 import csv
+from helpers.window import guardar_archivo
 
 
-def generar_csv(data, nombre_archivo):
-    ruta_limpia = generar_ruta_csv(nombre_archivo)
+def generar_csv(data, ruta_archivo):
+    ruta_limpia = limpiar_ruta(ruta_archivo)
     data_limpia = preparar_data_csv(data)
     with open(ruta_limpia, mode="w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
@@ -16,8 +17,6 @@ def preparar_data_csv(data, key="respuestas_etiquetas"):
     return resultado
 
 # Privado
-def generar_ruta_csv(nombre_archivo):
-    nombre_archivo_limpio = nombre_archivo.split(".")[0]
+def limpiar_ruta(ruta_archivo):
     extension = ".csv"
-    carpeta = "respuestas/csv/"
-    return f"{carpeta}{nombre_archivo_limpio}{extension}"
+    return f"{ruta_archivo}{extension}"
