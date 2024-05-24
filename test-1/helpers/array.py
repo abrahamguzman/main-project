@@ -14,10 +14,16 @@ def formatear_archivo(
             lines_etiquetas = []
             for line in lines:
                 texto_etiqueta = line.split("\n")
-                lines_etiquetas.append({
-                    "texto": texto_etiqueta[0],
-                    "etiquetas": texto_etiqueta[1]
-                })
+                try:
+                    lines_etiquetas.append({
+                        "texto": texto_etiqueta[0],
+                            "etiquetas": texto_etiqueta[1]
+                    })
+                except IndexError:
+                    lines_etiquetas.append({
+                        "texto": texto_etiqueta[0],
+                        "etiquetas": ""
+                    })
             i["respuestas_etiquetas"] = lines_etiquetas
         
         if incluir_texto is False:
