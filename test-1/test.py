@@ -11,7 +11,7 @@ from helpers.window import abrir_archivo, guardar_archivo
 
 
 
-archivo_procesado = leer_json("respuestas/prueba/prueba.json")
+archivo_procesado = leer_json("respuestas/json/prueba.json")
 ruta_guardar_archivos = guardar_archivo()
 
 generar_xlsx(
