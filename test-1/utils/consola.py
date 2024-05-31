@@ -1,5 +1,5 @@
 import inquirer
-from helpers.docs import listar_archivos
+from utils.docs import listar_archivos
 
 def seleccionar_archivo(directorio):
     archivos = listar_archivos(directorio)

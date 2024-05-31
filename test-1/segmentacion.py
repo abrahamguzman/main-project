@@ -1,6 +1,6 @@
 from openai import OpenAI
 from nltk.tokenize import sent_tokenize
-from helpers.json import generar_json
+from utils.json import generar_json
 
 client = OpenAI()
 

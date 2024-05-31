@@ -1,8 +1,8 @@
 from openai import OpenAI
-from helpers.window import abrir_archivo
-from helpers.openai.file import subir_archivo
-from helpers.openai.vector_store import crear_vector_store, subir_archivo_a_vector_store
-from helpers.openai.assistant import crear_asistente
+from utils.window import abrir_archivo
+from utils.openai.file import subir_archivo
+from utils.openai.vector_store import crear_vector_store, subir_archivo_a_vector_store
+from utils.openai.assistant import crear_asistente
 
 client = OpenAI()
 
@@ -31,7 +31,7 @@ thread = client.beta.threads.create()
 message = client.beta.threads.messages.create(
   thread_id=thread.id,
   role="user",
-  content="tienes algún vector store subido?"
+  content="que me puedes decir sobre la organización criminal que está en el archivo Pruebita que esta subido en tu vector store "
 )
 
 id_asistente = "asst_4lwYsJmPWAX92B2roX221UED"

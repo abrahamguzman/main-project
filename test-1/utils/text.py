@@ -1,4 +1,4 @@
-from helpers.token import numero_tokens_por_string
+from utils.token import numero_tokens_por_string
 
 def dividir_texto_por_tokens(texto: str, max_tokens: int) -> list[list[str]]:
     lista = []
