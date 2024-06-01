@@ -9,7 +9,7 @@ def crear_asistente(
         name=nombre,
         model=model,
         instructions=instrucciones,
-        tools=[{"type": "code_interpreter"}],
+        tools=[{"type": "file_search"}],
         tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}}
     )
     return response
