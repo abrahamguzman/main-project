@@ -1,0 +1,4 @@
+.env
+/utils/__pycache__/
+/utils/openai/__pycache__/
+/respuestas/prueba
