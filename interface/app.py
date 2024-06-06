@@ -1,7 +1,7 @@
 import tkinter as tk
 from pages.assistant.assistants import AssistantsPage
-from pages.file import FilePage
-from pages.vector_store import VectorStorePage
+from pages.file.file import FilePage
+from pages.vector_store.vector_store import VectorStorePage
 from config.colors import BG_COLOR, TEXT_COLOR
 
 
