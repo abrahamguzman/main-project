@@ -10,7 +10,6 @@ class AssistantsPage(tk.Frame):
     def __init__(self, parent):
         super().__init__(parent)
         
-        self.page_parent = parent
         self.configure(bg=BG_COLOR)
 
         self.title = tk.Label(
@@ -34,17 +33,17 @@ class AssistantsPage(tk.Frame):
             )
 
         # Contenido de la tabla
-        assistants = listar_asistentes(client=client)
+        assistants = listar_asistentes()
         for i, assistant in enumerate(assistants):
             labels = [i, assistant.name, assistant.id]
             buttons = [
                 {
                     "name": "Usar",
-                    "command": lambda: self.on_play_assistant_button_click(assistant.id),
+                    "command": lambda assistant_id=assistant.id: self.on_play_assistant_button_click(assistant_id),
                 },
                 {
                     "name": "Editar",
-                    "command": lambda: self.on_edit_assistant_button_click(assistant.id),
+                    "command": lambda assistant_id=assistant.id: self.on_edit_assistant_button_click(assistant_id),
                 },
             ]
             # Agregar labels
@@ -61,12 +60,11 @@ class AssistantsPage(tk.Frame):
                 )
 
         assistants_table.pack()
+        
 
-    
     # Funciones
     def on_play_assistant_button_click(self, assistant_id):
-        self.play_assistant_page = PlayAssistantPage(self.page_parent, assistant_id)
-        self.play_assistant_page.pack()
+        play_assistant_page = PlayAssistantPage(assistant_id)
 
     def on_edit_assistant_button_click(self, assistant_id):
         print(assistant_id)

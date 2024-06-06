@@ -1,5 +1,8 @@
+from config.openai import client
+from utils.openai.run import crear_run
+from utils.openai.thread import crear_hilo, añadir_mensaje_hilo, obtener_ultimo_mensaje_hilo
+
 def crear_asistente(
-  client, 
   nombre, 
   instrucciones, 
   temperatura=0,
@@ -16,6 +19,17 @@ def crear_asistente(
     )
     return response
   
-def listar_asistentes(client):
+def listar_asistentes():
     response = client.beta.assistants.list(order="desc")
     return response
+
+# Fución encargada de crear un hilo con el id del asistente y ejecutarlo
+def preguntar_asistente(assistant_id, text):
+  hilo = crear_hilo()
+  añadir_mensaje_hilo(hilo.id, text)
+  
+  if crear_run(hilo.id, assistant_id):
+    message = obtener_ultimo_mensaje_hilo(hilo.id)
+    return message
+  else:
+    return None
