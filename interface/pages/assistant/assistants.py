@@ -2,7 +2,6 @@ import tkinter as tk
 from utils.openai.assistant import listar_asistentes
 from config.colors import BG_COLOR, TEXT_COLOR
 from config.fonts import FONT, FONT_BOLD, FONT_TITLE
-from config.openai import client
 from pages.assistant.play_assistant import PlayAssistantPage
 
 
