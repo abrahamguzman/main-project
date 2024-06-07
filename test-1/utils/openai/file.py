@@ -1,7 +1,7 @@
 from openai import OpenAI
 from utils.logger import logger
+from config.openai import client_ai
 
-client = OpenAI()
 
 
 def subir_archivo(client, ruta_archivo):
@@ -28,6 +28,6 @@ def subir_archivos(client, rutas_archivos: list):
     return id_archivos
 
 
-def listar_archivos(client):
-	response = client.files.list()
+def listar_archivos():
+	response = client_ai.files.list()
 	return response

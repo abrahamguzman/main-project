@@ -4,7 +4,8 @@ def crear_asistente(
   instrucciones, 
   temperatura=0,
   model="gpt-4o", 
-  vector_store_id=None
+  vector_store_id=None,
+  top_p=0
   ):
     response = client.beta.assistants.create(
         name=nombre,
@@ -12,7 +13,8 @@ def crear_asistente(
         instructions=instrucciones,
         temperature=temperatura,
         tools=[{"type": "file_search"}],
-        tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}}
+        tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}},
+        top_p=top_p,
     )
     return response
   
