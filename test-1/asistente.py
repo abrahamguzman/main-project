@@ -33,13 +33,13 @@ subir_archivo_a_vector_store(
 # MODIFICAR SOLO LO DE ABAJO 
  
 
-""" 
+
 # Crear asistente y guardar su ID
 asistente = crear_asistente(
     client=client,
     nombre="asistente_Jessica",
-    instrucciones="Eres un experto lingüista en idioma español, que se encargará de segmentar y etiquetar los segmentos de un texto segun las instrucciones dadas.",
-    vector_store_id="vs_ZOYSsOlWh8Pae323oc6HA4aY"
+    instrucciones="Eres un experto lingüista en idioma español, segmentarás y etiquetarás los segmentos de un texto segun las instrucciones dadas.",
+    vector_store_id="vs_gWWBzdq03YldgIPmqqW6Z0cg"
 )
 print(asistente.id)
 
@@ -47,13 +47,13 @@ print(asistente.id)
 # Crear hilo y guardar su ID
 hilo = crear_hilo(client=client)
 print(hilo.id)
- """
 
-id_asistente = "asst_NZ57l8gSaBMmpYi9PBwfnzia"
-id_hilo = "thread_0AC9TKabvRfs5Xrd4H2ESjiW"
+
+id_asistente = "asst_6i37B4mjWIaPV5k9K26LkwKb"
+id_hilo = "thread_FecTdWRQ2AxbfV063EBcTiSf"
 
 # Prompt para el asistente
-
+""" 
 while True:
     prompt = input("Prompt: ")
 
@@ -63,3 +63,4 @@ while True:
 
     if run:
         print(obtener_ultimo_mensaje_hilo(client=client, thread_id=id_hilo))
+ """
