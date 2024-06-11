@@ -1,6 +1,6 @@
 import tkinter as tk
 from config.colors import BG_COLOR, TEXT_COLOR, BG_GRAY
-from config.fonts import FONT, FONT_BOLD, FONT_TITLE
+from config.fonts import FONT, FONT_BOLD
 from utils.openai.assistant import preguntar_asistente
 
 
@@ -8,15 +8,12 @@ class PlayAssistantPage(tk.Tk):
     def __init__(self, assistant_id):
         super().__init__()
         self.assistant_id = assistant_id
-        self.configure(bg=BG_COLOR)
 
         self.title("Chat")
-        self.resizable(width=False, height=False)
-        self.configure(width=470, height=550, bg=BG_COLOR)
+        self.configure(width=1000, height=600, bg=BG_COLOR)
         
         # head label
-        head_label = tk.Label(self, bg=BG_COLOR, fg=TEXT_COLOR,
-                           text="Chat", font=FONT_BOLD, pady=10)
+        head_label = tk.Label(self, bg=BG_COLOR, fg=TEXT_COLOR, text="Chat", font=FONT_BOLD, pady=10)
         head_label.place(relwidth=1)
         
         # tiny divider
