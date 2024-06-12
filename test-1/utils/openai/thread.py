@@ -1,5 +1,7 @@
-def crear_hilo(client):
-    thread = client.beta.threads.create()
+from config.openai import client_ai
+
+def crear_hilo(vector_store_id):
+    thread = client_ai.beta.threads.create(tool_resources={"file_search": {"vector_store_ids": [vector_store_id]}})
     return thread
 
 def eliminar_hilo(client, thread_id):

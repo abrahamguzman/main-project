@@ -1,8 +1,9 @@
 from openai import OpenAI
 from utils.window import abrir_archivo
+from utils.consola import seleccionar_asistente
 from utils.openai.file import subir_archivo
 from utils.openai.vector_store import crear_vector_store, subir_archivo_a_vector_store
-from utils.openai.assistant import crear_asistente, modificar_asistente
+from utils.openai.assistant import crear_asistente, modificar_asistente, listar_asistentes
 from utils.openai.run import crear_run
 from utils.openai.thread import (
     añadir_mensaje_hilo,
@@ -34,38 +35,44 @@ subir_archivo_a_vector_store(
 
 # Crear asistente y guardar su ID
 """ asistente = crear_asistente(
-    client=client,
-    nombre="asistente_Jessica",
-    instrucciones="Eres un experto lingüista en idioma español, segmentarás y etiquetarás los segmentos de un texto segun las instrucciones dadas.",
-    vector_store_id="vs_gWWBzdq03YldgIPmqqW6Z0cg"
+    nombre="fiscal_trata_personas",
+    instrucciones="Eres un fiscal peruano que solo le interesa encarcelar personas, para poder ascender en tu trabajo, no escatimas en mentir",
+    temperatura=0.5
 )
 print(asistente.id) """
 
 # Modificar asistente (RECOMENDADO)
 modificar_asistente(
-    id_asistente="asst_6i37B4mjWIaPV5k9K26LkwKb",
-    instrucciones="Eres un experto lingüista en idioma español, segmentarás y etiquetarás los segmentos de un texto segun las instrucciones dadas.",
+    id_asistente="asst_gd4kui7hcC0Pr9kGvIMoz8BE",
+    temperatura=0,
 )
 
 
 # FUNCIONMIENTO PRINCIPAL (solo modificar el ID del asistente)
 
 # ASISTENTE A USAR (ID)
-id_asistente = "asst_6i37B4mjWIaPV5k9K26LkwKb"
-
+#id_asistente = "asst_9vUC2xg3KmI6CoHgILMOhPmB"
+vector_store_id = "vs_pK5oDUL60cyEfXcwFHH8LMPZ"
 
 # Crear hilo y guardar su ID
-hilo = crear_hilo(client=client)
-#hilo.id = "Insertar ID del hilo (Si es necesario)"
+hilo = crear_hilo(vector_store_id)
+print(hilo.id)
+hilo.id = "thread_u5It3UjSY9jtKUnMM43R14c2" # Pegar el ID del hilo a usar
 
 
 # Prompt para el asistente
 while True:
-    prompt = input("Prompt: ")
-
-    message = añadir_mensaje_hilo(client=client, thread_id=hilo.id, content=prompt)
-
-    run = crear_run(client=client, thread_id=hilo.id, assistant_id=id_asistente)
-
-    if run:
-        print(obtener_ultimo_mensaje_hilo(client=client, thread_id=hilo.id))
+    asistentes = listar_asistentes()
+    nombres_asistentes = [f"{i}-{asistente.name}" for i, asistente in enumerate(asistentes.data)]
+    ids_asistentes = [asistente.id for asistente in asistentes.data]
+    indice = seleccionar_asistente(nombres_asistentes).split("-")[0]
+    id_asistente = ids_asistentes[int(indice)]
+    while True:
+        prompt = input("Prompt: ")
+        if prompt == "s" or prompt == "S":
+            break
+        
+        message = añadir_mensaje_hilo(client=client, thread_id=hilo.id, content=prompt)
+        run = crear_run(thread_id=hilo.id, assistant_id=id_asistente)
+        if run:
+            print(obtener_ultimo_mensaje_hilo(client=client, thread_id=hilo.id))

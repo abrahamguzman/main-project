@@ -14,3 +14,16 @@ def seleccionar_archivo(directorio):
     answers = inquirer.prompt(questions)
 
     return answers["archivo"]
+
+def seleccionar_asistente(asistentes):
+    questions = [
+        inquirer.List(
+            name='asistente',
+            message="Por favor, selecciona un asistente",
+            choices=asistentes,
+            ),
+        ]
+
+    answers = inquirer.prompt(questions)
+
+    return answers["asistente"]
