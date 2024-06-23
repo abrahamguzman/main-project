@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres lingüista especialista en idioma español y abogado."
+    },
+    {
+        "role": "user",
+        "content": "A. Segmentar: Dividir el texto en unidades pequeñas de lenguaje (usando un doble salto de línea siempre), que obligatoriamente:\nA.1 De la menor cantidad de palabras posible;\nA.2 Transmite una sola idea;\nA.3 Contiene sujeto, verbo y predicado; expresa o tácitamente según el contexto de los demás segmentos.\nA.4 Que no tenga más de 25 palabras.\nB. Resaltar: Poner dos palabras representativas entre “*” en cada segmento. Ejemplo: “Este es un *ejemplo* de como seleccionar y *resaltar* dos palabras por cada segmento”\nE. Respuesta: Tus respuestas exclusivamente serán el segmento (que incluye las dos palabras resaltadas)."
+    }
+]

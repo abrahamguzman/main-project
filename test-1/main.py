@@ -3,7 +3,6 @@ from utils.file import lee_archivo_docx
 from utils.text import dividir_texto_por_tokens
 from utils.array import formatear_archivo
 from utils.json import generar_json, leer_json
-from utils.consola import seleccionar_archivo
 from utils.csv import generar_csv
 from utils.xlsx import generar_xlsx
 from utils.window import abrir_archivo, guardar_archivo
